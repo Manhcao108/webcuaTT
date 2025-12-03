@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop Online</title>
+
+  <!-- Icon Font Awesome (dùng cho icon Facebook) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --primary: #222222;
+      --muted: #777777;
+      --accent: #ff6b6b;
+      --radius-lg: 18px;
+      --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      line-height: 1.5;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== Layout chung ===== */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(245, 245, 245, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 12px 16px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 1rem;
+    }
+
+    .tagline {
+      font-size: 0.78rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ===== Social bar ===== */
+
+    .social-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+    }
+
+    .social-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: none;
+    }
+
+    .social-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: var(--card-bg);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+    }
+
+    .social-btn span {
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Màu riêng */
+    .social-fb {
+      color: #1877f2;
+    }
+
+    .social-zalo {
+      color: #0068ff;
+    }
+
+    .social-kakao {
+      color: #2e1810;
+    }
+
+    /* ===== Hero section ===== */
+
+    .hero {
+      padding: 12px 16px 4px;
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .hero-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 420px;
+    }
+
+    /* ===== Product grid ===== */
+
+    main {
+      flex: 1;
+    }
+
+    .products-section {
+      padding: 8px 16px 24px 16px;
+    }
+
+    .products-header {
+      max-width: 1120px;
+      margin: 0 auto 12px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .products-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .products-filter {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .product-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        padding-top: 16px;
+      }
+
+      .hero-title {
+        font-size: 1.5rem;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .products-title {
+        font-size: 1.05rem;
+      }
+
+      .social-label {
+        display: inline-block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== Card sản phẩm ===== */
+
+    .product-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-image-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 110%; /* tỉ lệ 9:10 cho mobile */
+      overflow: hidden;
+      background: #e9e9e9;
+    }
+
+    .product-image-wrapper img {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-image-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .product-hover {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.05)
+      );
+      opacity: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 8px;
+      transition: opacity 0.25s ease;
+      color: #ffffff;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .product-card:hover .product-hover {
+      opacity: 1;
+    }
+
+    .product-body {
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .product-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .product-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .product-price {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .product-badge {
+      font-size: 0.7rem;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(255, 107, 107, 0.1);
+      color: var(--accent);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .product-chip-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    /* ===== Modal xem sản phẩm ===== */
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 100;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--card-bg);
+      border-radius: 20px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 100%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      animation: popIn 0.22s ease-out;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.96);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .modal-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .modal-close {
+      border: none;
+      background: transparent;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .modal-body {
+      padding: 10px 14px 14px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 720px) {
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .modal-main-image {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #e9e9e9;
+    }
+
+    .modal-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .thumb-row {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+    }
+
+    .thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .thumb.active {
+      border-color: var(--accent);
+    }
+
+    .modal-info-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .modal-price {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .modal-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+    }
+
+    .color-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .color-dot.red {
+      background: #f56565;
+    }
+
+    .color-dot.black {
+      background: #111111;
+    }
+
+    .color-dot.white {
+      background: #f4f4f4;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 10px 12px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 8px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease;
+      box-shadow: 0 10px 20px rgba(255, 107, 107, 0.35);
+    }
+
+    .contact-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 6px 14px rgba(255, 107, 107, 0.3);
+      background: #ff4f4f;
+    }
+
+    .contact-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ===== Mobile bar liên hệ nhanh (dưới cùng) ===== */
+
+    .mobile-contact-bar {
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .mobile-contact-inner {
+      pointer-events: auto;
+      background: #ffffff;
+      border-radius: 999px;
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.16);
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      max-width: 360px;
+      width: calc(100% - 32px);
+    }
+
+    .mobile-contact-text {
+      font-size: 0.78rem;
+      color: var(--muted);
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mobile-contact-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .mobile-contact-btn {
+      border-radius: 999px;
+      padding: 4px 9px;
+      border: none;
+      font-size: 0.75rem;
+      background: var(--accent);
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .mobile-contact-btn i {
+      font-size: 0.8rem;
+    }
+
+    @media (min-width: 769px) {
+      .mobile-contact-bar {
+        display: none;
+      }
+    }
+
+    footer {
+      padding: 16px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- ===== HEADER ===== -->
+    <header>
+      <div class="container header-inner">
+        <div class="header-left">
+          <div class="logo">Shop Của Bạn</div>
+          <div class="tagline">Đặt hàng nhanh, chat liền tay</div>
+        </div>
+        <div class="social-bar">
+          <span class="social-label">Liên hệ:</span>
+
+          <!-- TODO: đổi các link href thành link thật của bạn -->
+          <a
+            class="social-btn social-fb"
+            href="https://facebook.com/"
+            target="_blank"
+            aria-label="Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <a
+            class="social-btn social-zalo"
+            href="https://zalo.me/"
+            target="_blank"
+            aria-label="Zalo"
+          >
+            <span>Z</span>
+          </a>
+
+          <a
+            class="social-btn social-kakao"
+            href="https://www.kakaocorp.com/"
+            target="_blank"
+            aria-label="KakaoTalk"
+          >
+            <span>Ka</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1 class="hero-title">Hàng mới mỗi ngày, chốt nhanh qua chat</h1>
+        <p class="hero-sub">
+          Lướt nhẹ, xem hình rõ nét, ưng mẫu nào thì bấm xem chi tiết &amp; liên
+          hệ trực tiếp người bán. Giao diện tối ưu cho điện thoại.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== DANH SÁCH SẢN PHẨM ===== -->
+    <main>
+      <section class="products-section">
+        <div class="products-header">
+          <div class="products-title">Sản phẩm nổi bật</div>
+          <div class="products-filter">Vuốt để xem thêm &rarr;</div>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+          <!-- Card 1 -->
+          <article
+            class="product-card"
+            data-name="Áo thun basic unisex"
+            data-price="199.000đ"
+            data-desc="Chất cotton 100%, mềm mịn, form rộng dễ phối đồ."
+            data-images='[
+              "https://via.placeholder.com/800x900.png?text=Ao+thun+1",
+              "https://via.placeholder.com/800x900.png?text=Ao+thun+1+chi+ti%C3%AA%CC%81t",
+              "https://via.placeholder.com/800x900.png?text=Ao+thun+1+ph%C3%B4%CC%81i+%C4%91%C3%B4"
+            ]'
+          >
+            <div class="product-image-wrapper">
+              <img
+                src="https://via.placeholder.com/800x900.png?text=Ao+thun+1"
+                alt="Áo thun basic unisex"
+              />
+              <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
+            </div>
+            <div class="product-body">
+              <div class="product-name">Áo thun basic unisex</div>
+              <p class="product-desc">
+                Vải dày dặn, không xù lông, đủ size S - XL, 4 màu cơ bản.
+              </p>
+              <div class="product-bottom">
+                <div class="product-price">199.000đ</div>
+                <div class="product-badge">Còn hàng</div>
+              </div>
+              <div class="product-chip-row">
+                <span class="dot"></span> <span>4 màu · Freeship nội thành</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article
+            class="product-card"
+            data-name="Quần jean baggy"
+            data-price="299.000đ"
+            data-desc="Jean baggy form Hàn, dễ phối áo thun, sơmi."
+            data-images='[
+              "https://via.placeholder.com/800x900.png?text=Quan+jean+1",
+              "https://via.placeholder.com/800x900.png?text=Quan+jean+1+chi+ti%C3%AA%CC%81t",
+              "https://via.placeholder.com/800x900.png?text=Quan+jean+1+ph%C3%B4%CC%81i+%C4%91%C3%B4"
+            ]'
+          >
+            <div class="product-image-wrapper">
+              <img
+                src="https://via.placeholder.com/800x900.png?text=Quan+jean+1"
+                alt="Quần jean baggy"
+              />
+              <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
+            </div>
+            <div class="product-body">
+              <div class="product-name">Quần jean baggy</div>
+              <p class="product-desc">
+                Lưng cao tôn dáng, tông xanh vintage, ít nhăn, dễ giặt.
+              </p>
+              <div class="product-bottom">
+                <div class="product-price">299.000đ</div>
+                <div class="product-badge">Bán chạy</div>
+              </div>
+              <div class="product-chip-row">
+                <span class="dot"></span> <span>Size 26 - 32 · 2 màu</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article
+            class="product-card"
+            data-name="Set đồ comfy ở nhà"
+            data-price="259.000đ"
+            data-desc="Set áo quần mặc nhà siêu thoải mái, lên hình vẫn đẹp."
+            data-images='[
+              "https://via.placeholder.com/800x900.png?text=Set+comfy+1",
+              "https://via.placeholder.com/800x900.png?text=Set+comfy+1+chi+ti%C3%AA%CC%81t",
+              "https://via.placeholder.com/800x900.png?text=Set+comfy+1+ph%C3%B4%CC%81i+%C4%91%C3%B4"
+            ]'
+          >
+            <div class="product-image-wrapper">
+              <img
+                src="https://via.placeholder.com/800x900.png?text=Set+comfy+1"
+                alt="Set đồ comfy ở nhà"
+              />
+              <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
+            </div>
+            <div class="product-body">
+              <div class="product-name">Set đồ comfy ở nhà</div>
+              <p class="product-desc">
+                Mềm nhẹ, thấm hút tốt, hợp mặc ở nhà, đi cafe nhẹ nhàng.
+              </p>
+              <div class="product-bottom">
+                <div class="product-price">259.000đ</div>
+                <div class="product-badge">New</div>
+              </div>
+              <div class="product-chip-row">
+                <span class="dot"></span> <span>Mặc unisex · 3 màu</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>© 2025 Shop Của Bạn · Liên hệ để đặt hàng nhanh.</footer>
+
+    <!-- ===== MOBILE CONTACT BAR ===== -->
+    <div class="mobile-contact-bar">
+      <div class="mobile-contact-inner">
+        <div class="mobile-contact-text">Cần tư vấn thêm? Chat với shop nhé.</div>
+        <div class="mobile-contact-actions">
+          <!-- TODO: sửa link fb / zalo ở đây -->
+          <a
+            href="https://facebook.com/"
+            target="_blank"
+            class="social-btn social-fb"
+            aria-label="Facebook"
+            style="box-shadow:none;border:none;"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a
+            href="https://zalo.me/"
+            target="_blank"
+            class="social-btn social-zalo"
+            aria-label="Zalo"
+            style="box-shadow:none;border:none;"
+          >
+            <span>Z</span>
+          </a>
+          <button
+            class="mobile-contact-btn"
+            onclick="window.open('https://zalo.me/', '_blank')"
+          >
+            <i class="fa-regular fa-message"></i>
+            Chat nhanh
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MODAL DETAIL SẢN PHẨM ===== -->
+    <div class="modal-backdrop" id="productModalBackdrop">
+      <div class="modal" role="dialog" aria-modal="true">
+        <div class="modal-header">
+          <div class="modal-title" id="modalTitle">Tên sản phẩm</div>
+          <button class="modal-close" id="modalCloseBtn" aria-label="Đóng">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <div class="modal-main-image">
+              <img id="modalMainImage" src="" alt="Ảnh sản phẩm" />
+            </div>
+            <div class="thumb-row" id="thumbRow"></div>
+          </div>
+
+          <div>
+            <div class="modal-info-title-row">
+              <div class="modal-price" id="modalPrice">0đ</div>
+              <span class="product-badge">Chat để chốt đơn</span>
+            </div>
+            <p class="modal-desc" id="modalDesc">
+              Mô tả sản phẩm sẽ hiển thị ở đây.
+            </p>
+
+            <div class="color-row">
+              <span>Màu có sẵn:</span>
+              <span class="color-dot red"></span>
+              <span class="color-dot black"></span>
+              <span class="color-dot white"></span>
+            </div>
+
+            <!-- TODO: thay link sang liên hệ bạn muốn (fb, zalo, sđt,...) -->
+            <button
+              class="contact-btn"
+              id="contactBtn"
+              type="button"
+            >
+              <i class="fa-regular fa-message"></i>
+              Liên hệ ngay với người bán
+            </button>
+            <p class="contact-sub">
+              Gợi ý: chỉnh nút này mở Facebook, Zalo hoặc link thanh toán của bạn.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== JS ===== -->
+  <script>
+    // Cấu hình link liên hệ chính (được dùng khi bấm nút "Liên hệ ngay với người bán" trong modal)
+    const CONTACT_URL = "https://zalo.me/"; // TODO: đổi sang link thật (FB / Zalo / form...)
+
+    const productModalBackdrop = document.getElementById("productModalBackdrop");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalPrice = document.getElementById("modalPrice");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalMainImage = document.getElementById("modalMainImage");
+    const thumbRow = document.getElementById("thumbRow");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+    const contactBtn = document.getElementById("contactBtn");
+
+    let currentImages = [];
+
+    function openModalFromCard(card) {
+      const name = card.dataset.name || "";
+      const price = card.dataset.price || "";
+      const desc = card.dataset.desc || "";
+      const images = (() => {
+        try {
+          return JSON.parse(card.dataset.images || "[]");
+        } catch (e) {
+          return [];
+        }
+      })();
+
+      currentImages = images.length ? images : [card.querySelector("img").src];
+
+      modalTitle.textContent = name;
+      modalPrice.textContent = price;
+      modalDesc.textContent = desc;
+      modalMainImage.src = currentImages[0] || "";
+      renderThumbs(currentImages);
+
+      productModalBackdrop.classList.add("show");
+    }
+
+    function renderThumbs(images) {
+      thumbRow.innerHTML = "";
+      images.forEach((src, index) => {
+        const div = document.createElement("div");
+        div.className = "thumb" + (index === 0 ? " active" : "");
+        div.innerHTML = `<img src="${src}" alt="thumb" />`;
+        div.addEventListener("click", () => {
+          modalMainImage.src = src;
+          document
+            .querySelectorAll(".thumb")
+            .forEach((t) => t.classList.remove("active"));
+          div.classList.add("active");
+        });
+        thumbRow.appendChild(div);
+      });
+    }
+
+    function closeModal() {
+      productModalBackdrop.classList.remove("show");
+    }
+
+    // Gán event cho từng product-card
+    document.querySelectorAll(".product-card").forEach((card) => {
+      card.addEventListener("click", () => openModalFromCard(card));
+    });
+
+    // Đóng modal khi click nút X
+    modalCloseBtn.addEventListener("click", closeModal);
+
+    // Đóng modal khi click ra ngoài vùng modal
+    productModalBackdrop.addEventListener("click", (e) => {
+      if (e.target === productModalBackdrop) {
+        closeModal();
+      }
+    });
+
+    // Nút liên hệ
+    contactBtn.addEventListener("click", () => {
+      window.open(CONTACT_URL, "_blank");
+    });
+
+    // Hỗ trợ phím Esc đóng modal
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
