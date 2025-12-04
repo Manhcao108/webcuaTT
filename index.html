@@ -499,13 +499,13 @@
       margin-bottom: 10px;
     }
 
-    .color-row {
+    /* .color-row {
       display: flex;
       align-items: center;
       gap: 5px;
       margin-bottom: 10px;
       font-size: 0.8rem;
-    }
+    } */
 
     .color-dot {
       width: 14px;
@@ -645,7 +645,7 @@
           <!-- TODO: đổi các link href thành link thật của bạn -->
           <a
             class="social-btn social-fb"
-            href="https://facebook.com/"
+            href="https://www.facebook.com/profile.php?id=61582939686089"
             target="_blank"
             aria-label="Facebook"
           >
@@ -700,18 +700,19 @@
             data-price="199.000đ"
             data-desc="Chất cotton 100%, mềm mịn, form rộng dễ phối đồ."
             data-images='[
-              "https://via.placeholder.com/800x900.png?text=Ao+thun+1",
-              "https://via.placeholder.com/800x900.png?text=Ao+thun+1+chi+ti%C3%AA%CC%81t",
-              "https://via.placeholder.com/800x900.png?text=Ao+thun+1+ph%C3%B4%CC%81i+%C4%91%C3%B4"
+              "https://drive.google.com/uc?export=download&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr",
+              "https://drive.google.com/uc?export=download&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr",
+              "https://drive.google.com/uc?export=download&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr"
             ]'
           >
             <div class="product-image-wrapper">
               <img
-                src="https://via.placeholder.com/800x900.png?text=Ao+thun+1"
+                src="https://drive.google.com/uc?export=download&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr"
                 alt="Áo thun basic unisex"
               />
               <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
             </div>
+
             <div class="product-body">
               <div class="product-name">Áo thun basic unisex</div>
               <p class="product-desc">
@@ -794,6 +795,44 @@
               </div>
             </div>
           </article>
+
+          <!-- Card 4 -->
+          <article
+            class="product-card"
+            data-name="Áo sp4"
+            data-price="999.000đ"
+            data-desc="Chất cotton 10%, mềm mịn, form rộng khó phối đồ."
+            data-images='[
+                      "https://drive.google.com/uc?export=view&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr", 
+                      "https://drive.google.com/uc?export=view&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr",
+                      "https://drive.google.com/uc?export=view&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr"
+              ]'
+
+          >
+            <div class="product-image-wrapper">
+              <img
+                src="https://drive.google.com/uc?export=view&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr"
+                alt="Áo thun basic unisex"
+              />
+              <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
+            </div>
+            <div class="product-body">
+              <div class="product-name">Áo thun basic unisex</div>
+              <p class="product-desc">
+                Vải dày dặn, không xù lông, đủ size S - XL, 4 màu cơ bản.
+              </p>
+              <div class="product-bottom">
+                <div class="product-price">199.000đ</div>
+                <div class="product-badge">Còn hàng</div>
+              </div>
+              <div class="product-chip-row">
+                <span class="dot"></span> <span>4 màu · Freeship seoul gần soogsiluni </span>
+              </div>
+            </div>
+          </article>
+
+
+
         </div>
       </section>
     </main>
@@ -808,7 +847,7 @@
         <div class="mobile-contact-actions">
           <!-- TODO: sửa link fb / zalo ở đây -->
           <a
-            href="https://facebook.com/"
+            href="https://www.facebook.com/profile.php?id=61582939686089"
             target="_blank"
             class="social-btn social-fb"
             aria-label="Facebook"
@@ -862,12 +901,12 @@
               Mô tả sản phẩm sẽ hiển thị ở đây.
             </p>
 
-            <div class="color-row">
+            <!-- <div class="color-row">   dòng màu cso sẵn 
               <span>Màu có sẵn:</span>
               <span class="color-dot red"></span>
               <span class="color-dot black"></span>
               <span class="color-dot white"></span>
-            </div>
+            </div> -->
 
             <!-- TODO: thay link sang liên hệ bạn muốn (fb, zalo, sđt,...) -->
             <button
@@ -879,7 +918,7 @@
               Liên hệ ngay với người bán
             </button>
             <p class="contact-sub">
-              Gợi ý: chỉnh nút này mở Facebook, Zalo hoặc link thanh toán của bạn.
+              cảm ơn khách hàng đã tin tưởng và ủng hộ
             </p>
           </div>
         </div>
@@ -890,7 +929,7 @@
   <!-- ===== JS ===== -->
   <script>
     // Cấu hình link liên hệ chính (được dùng khi bấm nút "Liên hệ ngay với người bán" trong modal)
-    const CONTACT_URL = "https://zalo.me/"; // TODO: đổi sang link thật (FB / Zalo / form...)
+    const CONTACT_URL = "https://www.facebook.com/profile.php?id=61582939686089"; // TODO: đổi sang link thật (FB / Zalo / form...)
 
     const productModalBackdrop = document.getElementById("productModalBackdrop");
     const modalTitle = document.getElementById("modalTitle");
