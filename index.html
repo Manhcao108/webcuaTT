@@ -223,9 +223,6 @@
     }
     /* kết thúc icon */
 
-
-
-
     .container {
       max-width: 1120px;
       margin: 0 auto;
@@ -238,49 +235,29 @@
       justify-content: space-between;
       gap: 12px;
     }
-/* logo nhỏ nhỏ xinh xinh màu quang phổ */
-    .logo {
-  font-weight: 600; /* giảm độ đậm để mềm hơn */
-  text-transform: uppercase;
-  font-size: 2rem;
-  letter-spacing: 0.03em;
+/* logo nhỏ nhỏ xinh xinh  */
+    .handwriting-logo {
+      font-family: "Pacifico", cursive;
+      font-size: 2.4rem;
+      color: #ff8fb8;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(255, 145, 185, 0.3);
+    }
+    /* Mobile tối ưu */
+    @media (max-width: 600px) {
+      .handwriting-logo {
+        font-size: 1.9rem;      /* thu nhỏ cho vừa mắt */
+        letter-spacing: 0.5px;  /* bớt giãn chữ */
+        text-shadow: 0 1px 3px rgba(255, 145, 185, 0.25);
+      }
+    }
 
-  /* Gradient pastel mềm */
-  background: linear-gradient(
-    90deg,
-    #7ddfff,
-    #63a4ff,
-    #b38bff,
-    #ff8ce6,
-    #ffb3d9,
-    #7ddfff
-  );
-  background-size: 500% 100%;
-  -webkit-background-clip: text;
-  color: transparent;
-
-  /* Stroke nhẹ để dấu rõ mà không cứng */
-  -webkit-text-stroke: 0.4px rgba(255,255,255,0.4);
-
-  /* Animation mượt hơn trước */
-  animation: softMove 10s ease-in-out infinite;
-}
-
-@keyframes softMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    font-size: 1.4rem;   /* nhỏ lại để dịu hơn */
-    font-weight: 500;    /* mềm hơn */
-    -webkit-text-stroke: 0.25px rgba(255,255,255,0.35); /* dấu nhẹ */
-  }
-}
-
-
+    /* Màn nhỏ hơn nữa (iPhone SE, Android mini) */
+    @media (max-width: 400px) {
+      .handwriting-logo {
+        font-size: 1.7rem;
+      }
+    }
 /* logo nhỏ nhỏ xinh xinh kết thúc */
     .tagline {
       font-size: 0.78rem;
@@ -710,8 +687,7 @@
       margin-bottom: 10px;
       font-size: 0.8rem;
     } */
-/* kết  style của code màu có sẵn */
-    .color-dot {
+    /* .color-dot {
       width: 14px;
       height: 14px;
       border-radius: 999px;
@@ -728,8 +704,8 @@
 
     .color-dot.white {
       background: #f4f4f4;
-    }
-
+    } */
+/* /* kết  style của code màu có sẵn */ */
     .contact-btn {
       display: flex;
       align-items: center;
@@ -852,10 +828,13 @@
     <header>
       <div class="container header-inner">
         <div class="header-left">
-          <div class="logo">
-          Nhỏ Nhỏ Xinh Xinh
-          </div>
-          <div class="tagline">🌸🌸🌸</div>
+         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+            <div class="logo handwriting-logo">
+           Nhỏ Nhỏ Xinh Xinh
+            </div>
+
+          <div class="tagline">사랑</div>
         </div>
         <div class="social-bar">
 
