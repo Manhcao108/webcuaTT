@@ -880,12 +880,15 @@
       </div>
 
 <!-- mở phân loại -->
+ ở "phân loại" js đã có thể 1 mã có thể nhiều loại đồ
  <nav class="category-menu">
   <button data-filter="all">Tất cả</button>
   <button data-filter="ao">Áo</button>
   <button data-filter="quan">Quần</button>
   <button data-filter="vay">Váy</button>
   <button data-filter="giay">Giày</button>
+  <button data-filter="set">Set</button>
+  <button data-filter="phukien">Phụ Kiện</button>
 </nav>
 <!-- kết phân loại -->
 
@@ -912,15 +915,17 @@
         </div>
 
         <div class="product-grid" id="productGrid">
-          <!-- Card 1 -->
+          <!-- Card 1 -->       lưu ý : thêm ảnh thì sau 001.jpg" KO CÓ DẤU PHẨY Ở CUỐI KO CÓ DẤU PHẨY Ở CUỐI KO CÓ DẤU PHẨY Ở CUỐI
+                                        nếu nhiều ảnh mới có ","  001.jpg",
+                                                                  001a.jpg"
           <article
             class="product-card"
-            data-category="ao"
+            data-category="ao set"
             data-name="Mã 001"
             data-price="199.000đ"
             data-desc="mềm mịn, dễ phối đồ."
             data-images='[
-              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/001.jpg",
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/001.jpg"
             ]'
           >
             <div class="product-image-wrapper">
@@ -1059,7 +1064,10 @@
             data-desc="Set áo quần mặc nhà siêu thoải mái, lên hình vẫn đẹp."
             data-images='[
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005.jpg",
-              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005a.jpg"
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005a.jpg",
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005b.jpg",
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005c.jpg",
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005d.jpg"
          
 
             ]'
@@ -1182,14 +1190,13 @@
 
         // Lọc sản phẩm
         productCards.forEach(card => {
-          const category = card.dataset.category;
-
-          if (filter === "all" || category === filter) {
-            card.style.display = "block";
-          } else {
-            card.style.display = "none";
-          }
-        });
+        const categories = card.dataset.category.split(" "); // tách chuỗi
+        if (filter === "all" || categories.includes(filter)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
       });
     });
 // kết phân loại
