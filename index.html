@@ -65,6 +65,45 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
     }
+    /* code icon và mess mới */
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: white;
+      transition: 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Facebook Gradient */
+    .icon.fb {
+      background: linear-gradient(135deg, #1877F2, #4e8df5);
+    }
+
+    /* Messenger Gradient */
+    .icon.messenger {
+      background: linear-gradient(135deg, #0084FF, #00B2FF);
+    }
+
+    /* Hover Effect */
+    .icon:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    /* kết thúc icon */
+
+
+
 
     .container {
       max-width: 1120px;
@@ -78,14 +117,42 @@
       justify-content: space-between;
       gap: 12px;
     }
-
+/* logo nhỏ nhỏ xinh xinh màu quang phổ */
     .logo {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-size: 1rem;
-    }
+  font-weight: 600; /* giảm độ đậm để mềm hơn */
+  text-transform: uppercase;
+  font-size: 2rem;
+  letter-spacing: 0.03em;
 
+  /* Gradient pastel mềm */
+  background: linear-gradient(
+    90deg,
+    #7ddfff,
+    #63a4ff,
+    #b38bff,
+    #ff8ce6,
+    #ffb3d9,
+    #7ddfff
+  );
+  background-size: 500% 100%;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  /* Stroke nhẹ để dấu rõ mà không cứng */
+  -webkit-text-stroke: 0.4px rgba(255,255,255,0.4);
+
+  /* Animation mượt hơn trước */
+  animation: softMove 10s ease-in-out infinite;
+}
+
+@keyframes softMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* logo nhỏ nhỏ xinh xinh kết thúc */
     .tagline {
       font-size: 0.78rem;
       color: var(--muted);
@@ -502,7 +569,7 @@
     /* .color-row {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 5px;               style của code màu có sẵn
       margin-bottom: 10px;
       font-size: 0.8rem;
     } */
@@ -636,39 +703,26 @@
     <header>
       <div class="container header-inner">
         <div class="header-left">
-          <div class="logo">Shop Của Bạn</div>
+          <div class="logo">
+          Nhỏ Nhỏ <br>
+          Xinh Xinh
+          </div>
           <div class="tagline">Đặt hàng nhanh, chat liền tay</div>
         </div>
         <div class="social-bar">
-          <span class="social-label">Liên hệ:</span>
 
-          <!-- TODO: đổi các link href thành link thật của bạn -->
-          <a
-            class="social-btn social-fb"
-            href="https://www.facebook.com/profile.php?id=61582939686089"
-            target="_blank"
-            aria-label="Facebook"
-          >
-            <i class="fab fa-facebook-f"></i>
-          </a>
+       
+            <!-- code icon fb mess mới hiện đại 2024 -->
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61582939686089" class="icon fb" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
 
-          <a
-            class="social-btn social-zalo"
-            href="https://zalo.me/"
-            target="_blank"
-            aria-label="Zalo"
-          >
-            <span>Z</span>
-          </a>
-
-          <a
-            class="social-btn social-kakao"
-            href="https://www.kakaocorp.com/"
-            target="_blank"
-            aria-label="KakaoTalk"
-          >
-            <span>Ka</span>
-          </a>
+            <a href="https://www.messenger.com/e2ee/t/7402453413133248" class="icon messenger" target="_blank">
+              <i class="fab fa-facebook-messenger"></i>
+            </a>
+          </div>
+            <!-- đến đây là hết -->
         </div>
       </div>
     </header>
@@ -689,7 +743,7 @@
       <section class="products-section">
         <div class="products-header">
           <div class="products-title">Sản phẩm nổi bật</div>
-          <div class="products-filter">Vuốt để xem thêm &rarr;</div>
+          <div class="products-filter">TT</div>
         </div>
 
         <div class="product-grid" id="productGrid">
@@ -700,14 +754,12 @@
             data-price="199.000đ"
             data-desc="Chất cotton 100%, mềm mịn, form rộng dễ phối đồ."
             data-images='[
-              "https://drive.google.com/uc?export=download&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr",
-              "https://drive.google.com/uc?export=download&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr",
-              "https://drive.google.com/uc?export=download&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr"
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/001.jpg",
             ]'
           >
             <div class="product-image-wrapper">
               <img
-                src="https://drive.google.com/uc?export=download&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr"
+                src="https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/001.jpg"
                 alt="Áo thun basic unisex"
               />
               <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
@@ -735,14 +787,13 @@
             data-price="299.000đ"
             data-desc="Jean baggy form Hàn, dễ phối áo thun, sơmi."
             data-images='[
-              "https://via.placeholder.com/800x900.png?text=Quan+jean+1",
-              "https://via.placeholder.com/800x900.png?text=Quan+jean+1+chi+ti%C3%AA%CC%81t",
-              "https://via.placeholder.com/800x900.png?text=Quan+jean+1+ph%C3%B4%CC%81i+%C4%91%C3%B4"
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/002.jpg",
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/002a.jpg"
             ]'
           >
             <div class="product-image-wrapper">
               <img
-                src="https://via.placeholder.com/800x900.png?text=Quan+jean+1"
+                src="https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/002.jpg"
                 alt="Quần jean baggy"
               />
               <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
@@ -769,14 +820,12 @@
             data-price="259.000đ"
             data-desc="Set áo quần mặc nhà siêu thoải mái, lên hình vẫn đẹp."
             data-images='[
-              "https://via.placeholder.com/800x900.png?text=Set+comfy+1",
-              "https://via.placeholder.com/800x900.png?text=Set+comfy+1+chi+ti%C3%AA%CC%81t",
-              "https://via.placeholder.com/800x900.png?text=Set+comfy+1+ph%C3%B4%CC%81i+%C4%91%C3%B4"
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/003.jpg",
             ]'
           >
             <div class="product-image-wrapper">
               <img
-                src="https://via.placeholder.com/800x900.png?text=Set+comfy+1"
+                src="https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/003.jpg"
                 alt="Set đồ comfy ở nhà"
               />
               <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
@@ -799,34 +848,69 @@
           <!-- Card 4 -->
           <article
             class="product-card"
-            data-name="Áo sp4"
-            data-price="999.000đ"
-            data-desc="Chất cotton 10%, mềm mịn, form rộng khó phối đồ."
+            data-name="Set đồ comfy ở nhà"
+            data-price="259.000đ"
+            data-desc="Set áo quần mặc nhà siêu thoải mái, lên hình vẫn đẹp."
             data-images='[
-                      "https://drive.google.com/uc?export=view&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr", 
-                      "https://drive.google.com/uc?export=view&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr",
-                      "https://drive.google.com/uc?export=view&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr"
-              ]'
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/004.jpg",
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/004a.jpg"
 
+            ]'
           >
             <div class="product-image-wrapper">
               <img
-                src="https://drive.google.com/uc?export=view&id=1jRG8eEnxXJNUcL-8PTZSiG23nNMyxOjr"
-                alt="Áo thun basic unisex"
+                src="https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/004.jpg"
+                alt="Set đồ comfy ở nhà"
               />
               <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
             </div>
             <div class="product-body">
-              <div class="product-name">Áo thun basic unisex</div>
+              <div class="product-name">Set đồ comfy ở nhà</div>
               <p class="product-desc">
-                Vải dày dặn, không xù lông, đủ size S - XL, 4 màu cơ bản.
+                Mềm nhẹ, thấm hút tốt, hợp mặc ở nhà, đi cafe nhẹ nhàng.
               </p>
               <div class="product-bottom">
-                <div class="product-price">199.000đ</div>
-                <div class="product-badge">Còn hàng</div>
+                <div class="product-price">259.000đ</div>
+                <div class="product-badge">New</div>
               </div>
               <div class="product-chip-row">
-                <span class="dot"></span> <span>4 màu · Freeship seoul gần soogsiluni </span>
+                <span class="dot"></span> <span>Mặc unisex · 3 màu</span>
+              </div>
+            </div>
+          </article>
+
+
+ <!-- Card 5 -->
+          <article
+            class="product-card"
+            data-name="Set đồ comfy ở nhà"
+            data-price="259.000đ"
+            data-desc="Set áo quần mặc nhà siêu thoải mái, lên hình vẫn đẹp."
+            data-images='[
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005.jpg",
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005a.jpg"
+         
+
+            ]'
+          >
+            <div class="product-image-wrapper">
+              <img
+                src="https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005.jpg"
+                alt="Set đồ comfy ở nhà"
+              />
+              <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
+            </div>
+            <div class="product-body">
+              <div class="product-name">Set đồ comfy ở nhà</div>
+              <p class="product-desc">
+                Mềm nhẹ, thấm hút tốt, hợp mặc ở nhà, đi cafe nhẹ nhàng.
+              </p>
+              <div class="product-bottom">
+                <div class="product-price">259.000đ</div>
+                <div class="product-badge">New</div>
+              </div>
+              <div class="product-chip-row">
+                <span class="dot"></span> <span>Mặc unisex · 3 màu</span>
               </div>
             </div>
           </article>
@@ -838,7 +922,7 @@
     </main>
 
     <!-- ===== FOOTER ===== -->
-    <footer>© 2025 Shop Của Bạn · Liên hệ để đặt hàng nhanh.</footer>
+    <footer> Shop Của Nhỏ Nhỏ Xinh Xinh · Liên hệ để đặt hàng nhanh.</footer>
 
     <!-- ===== MOBILE CONTACT BAR ===== -->
     <div class="mobile-contact-bar">
@@ -855,22 +939,6 @@
           >
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a
-            href="https://zalo.me/"
-            target="_blank"
-            class="social-btn social-zalo"
-            aria-label="Zalo"
-            style="box-shadow:none;border:none;"
-          >
-            <span>Z</span>
-          </a>
-          <button
-            class="mobile-contact-btn"
-            onclick="window.open('https://zalo.me/', '_blank')"
-          >
-            <i class="fa-regular fa-message"></i>
-            Chat nhanh
-          </button>
         </div>
       </div>
     </div>
@@ -901,7 +969,7 @@
               Mô tả sản phẩm sẽ hiển thị ở đây.
             </p>
 
-            <!-- <div class="color-row">   dòng màu cso sẵn 
+            <!-- <div class="color-row">   dòng màu sản phẩm có sẵn 
               <span>Màu có sẵn:</span>
               <span class="color-dot red"></span>
               <span class="color-dot black"></span>
