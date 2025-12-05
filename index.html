@@ -151,6 +151,14 @@
   100% { background-position: 0% 50%; }
 }
 
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.4rem;   /* nhỏ lại để dịu hơn */
+    font-weight: 500;    /* mềm hơn */
+    -webkit-text-stroke: 0.25px rgba(255,255,255,0.35); /* dấu nhẹ */
+  }
+}
+
 
 /* logo nhỏ nhỏ xinh xinh kết thúc */
     .tagline {
@@ -479,7 +487,15 @@
       padding: 10px 14px;
       border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     }
+    /* mới thêm header mượt trên mobile */
+    header {
+      transition: transform 0.3s ease;
+    }
 
+    header.hide {
+      transform: translateY(-100%);
+    }
+/* kết mượt trên mobile */
     .modal-title {
       font-size: 0.95rem;
       font-weight: 600;
@@ -1080,6 +1096,23 @@
         closeModal();
       }
     });
+// mượt header trên mobile
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+  const current = window.scrollY;
+
+  if (current > lastScroll && current > 50) {
+    // Cuộn xuống → ẩn header
+    document.querySelector("header").classList.add("hide");
+  } else {
+    // Cuộn lên → hiện header
+    document.querySelector("header").classList.remove("hide");
+  }
+
+  lastScroll = current;
+});
+// kết mượt mobile 
   </script>
 </body>
 </html>
