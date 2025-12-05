@@ -22,30 +22,30 @@
 .category-menu {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 18px;
   margin-top: 10px;
   flex-wrap: wrap;
   width: 100%;
 }
 
-/* nút cơ bản */
+/* Style chung */
 .category-menu button {
   background: none;
   border: none;
   padding: 6px 4px;
   font-size: 0.92rem;
   cursor: pointer;
-  color: #444;
+  color: #555;
   position: relative;
   transition: 0.25s ease;
 }
 
-/* gạch chân hover - desktop */
+/* Gạch chân (desktop & mobile đều dùng) */
 .category-menu button::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 0;
+  bottom: -2px;
   width: 0%;
   height: 2px;
   background: #ff66a6;
@@ -53,44 +53,39 @@
   transition: width 0.25s ease;
 }
 
-.category-menu button:hover::after {
-  width: 100%;
+/* Hover desktop */
+@media (min-width: 601px) {
+  .category-menu button:hover::after {
+    width: 100%;
+  }
 }
 
-/* active */
+/* Active (desktop + mobile) */
+.category-menu button.active {
+  color: #d63384;
+}
 .category-menu button.active::after {
   width: 100%;
 }
 
-/* ==== MOBILE ==== */
+/* ===== MOBILE ===== */
 @media (max-width: 600px) {
   .category-menu {
-    justify-content: space-between; /* trải đều toàn hàng */
-    gap: 8px;
+    gap: 14px;
+    justify-content: center; /* căn giữa đẹp */
   }
 
   .category-menu button {
-    flex: 1;                 /* co giãn đều */
-    text-align: center;       /* căn giữa chữ */
-    padding: 8px 10px;
-    border-radius: 14px;
-    border: 1px solid rgba(0,0,0,0.08);
-    background: #fff;
+    padding: 8px 6px;
+    font-size: 0.95rem;
   }
 
-  /* tắt gạch chân */
+  /* Gạch chân nhỏ hơn một chút cho mobile */
   .category-menu button::after {
-    display: none;
-  }
-
-  /* active mobile */
-  .category-menu button.active {
-    background: #ffe0f0;
-    border-color: #ffb3d1;
-    color: #d63384;
+    height: 2px;
+    opacity: 0.8;
   }
 }
-
 
 /* kết style phân loại */
 
@@ -707,15 +702,15 @@
       color: var(--muted);
       margin-bottom: 10px;
     }
-
+/*  style của code màu có sẵn */
     /* .color-row {
       display: flex;
       align-items: center;
-      gap: 5px;               style của code màu có sẵn
+      gap: 5px;              
       margin-bottom: 10px;
       font-size: 0.8rem;
     } */
-
+/* kết  style của code màu có sẵn */
     .color-dot {
       width: 14px;
       height: 14px;
