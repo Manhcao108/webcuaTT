@@ -17,6 +17,85 @@
   />
 
   <style>
+
+/* mở style phân loại */
+.category-menu {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* nút cơ bản */
+.category-menu button {
+  background: none;
+  border: none;
+  padding: 6px 4px;
+  font-size: 0.92rem;
+  cursor: pointer;
+  color: #444;
+  position: relative;
+  transition: 0.25s ease;
+}
+
+/* gạch chân hover - desktop */
+.category-menu button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #ff66a6;
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+}
+
+.category-menu button:hover::after {
+  width: 100%;
+}
+
+/* active */
+.category-menu button.active::after {
+  width: 100%;
+}
+
+/* ==== MOBILE ==== */
+@media (max-width: 600px) {
+  .category-menu {
+    justify-content: space-between; /* trải đều toàn hàng */
+    gap: 8px;
+  }
+
+  .category-menu button {
+    flex: 1;                 /* co giãn đều */
+    text-align: center;       /* căn giữa chữ */
+    padding: 8px 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #fff;
+  }
+
+  /* tắt gạch chân */
+  .category-menu button::after {
+    display: none;
+  }
+
+  /* active mobile */
+  .category-menu button.active {
+    background: #ffe0f0;
+    border-color: #ffb3d1;
+    color: #d63384;
+  }
+}
+
+
+/* kết style phân loại */
+
+
+
 /* hiệu ứng hoa rơi cửa hàng */
     #flowers {
       position: fixed;
@@ -799,15 +878,27 @@
             <!-- đến đây là hết -->
         </div>
       </div>
+
+<!-- mở phân loại -->
+ <nav class="category-menu">
+  <button data-filter="all">Tất cả</button>
+  <button data-filter="ao">Áo</button>
+  <button data-filter="quan">Quần</button>
+  <button data-filter="vay">Váy</button>
+  <button data-filter="giay">Giày</button>
+</nav>
+<!-- kết phân loại -->
+
     </header>
 
     <!-- ===== HERO ===== -->
     <section class="hero">
       <div class="hero-inner">
-        <h1 class="hero-title">Hàng mới mỗi ngày, chốt nhanh qua chat</h1>
+        <h1 class="hero-title">Lưu ý đặt hàng: chốt nhanh qua chat</h1>
+        <h2 class="hero-title">Hàng oder 1-2 tuần</h2>
         <p class="hero-sub">
           Lướt nhẹ, xem hình rõ nét, ưng mẫu nào thì bấm xem chi tiết &amp; liên
-          hệ trực tiếp người bán. Giao diện tối ưu cho điện thoại.
+          hệ trực tiếp người bán. 
         </p>
       </div>
     </section>
@@ -824,9 +915,10 @@
           <!-- Card 1 -->
           <article
             class="product-card"
-            data-name="Áo thun basic unisex"
+            data-category="ao"
+            data-name="Mã 001"
             data-price="199.000đ"
-            data-desc="Chất cotton 100%, mềm mịn, form rộng dễ phối đồ."
+            data-desc="mềm mịn, dễ phối đồ."
             data-images='[
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/001.jpg",
             ]'
@@ -834,32 +926,34 @@
             <div class="product-image-wrapper">
               <img
                 src="https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/001.jpg"
-                alt="Áo thun basic unisex"
+                alt="Mã 001"
               />
               <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
             </div>
 
             <div class="product-body">
-              <div class="product-name">Áo thun basic unisex</div>
+              <div class="product-name">Mã 001</div>
               <p class="product-desc">
                 Vải dày dặn, không xù lông, đủ size S - XL, 4 màu cơ bản.
               </p>
               <div class="product-bottom">
-                <div class="product-price">199.000đ</div>
+                <div class="product-price">999.999đ</div>
                 <div class="product-badge">Còn hàng</div>
               </div>
               <div class="product-chip-row">
                 <span class="dot"></span> <span>4 màu · Freeship nội thành</span>
               </div>
             </div>
+            
           </article>
 
           <!-- Card 2 -->
           <article
             class="product-card"
-            data-name="Quần jean baggy"
-            data-price="299.000đ"
-            data-desc="Jean baggy form Hàn, dễ phối áo thun, sơmi."
+            data-category="quan"
+            data-name="Mã 002"
+            data-price="999.000đ"
+            data-desc="form Hàn, dễ phối áo thun."
             data-images='[
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/002.jpg",
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/002a.jpg"
@@ -868,17 +962,17 @@
             <div class="product-image-wrapper">
               <img
                 src="https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/002.jpg"
-                alt="Quần jean baggy"
+                alt="Mã 002"
               />
               <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
             </div>
             <div class="product-body">
-              <div class="product-name">Quần jean baggy</div>
+              <div class="product-name">Mã 002</div>
               <p class="product-desc">
                 Lưng cao tôn dáng, tông xanh vintage, ít nhăn, dễ giặt.
               </p>
               <div class="product-bottom">
-                <div class="product-price">299.000đ</div>
+                <div class="product-price">999.000đ</div>
                 <div class="product-badge">Bán chạy</div>
               </div>
               <div class="product-chip-row">
@@ -890,8 +984,9 @@
           <!-- Card 3 -->
           <article
             class="product-card"
-            data-name="Set đồ comfy ở nhà"
-            data-price="259.000đ"
+            data-category="vay"
+            data-name="Mã 003"
+            data-price="999.000đ"
             data-desc="Set áo quần mặc nhà siêu thoải mái, lên hình vẫn đẹp."
             data-images='[
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/003.jpg",
@@ -905,12 +1000,12 @@
               <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
             </div>
             <div class="product-body">
-              <div class="product-name">Set đồ comfy ở nhà</div>
+              <div class="product-name">Mã 003</div>
               <p class="product-desc">
                 Mềm nhẹ, thấm hút tốt, hợp mặc ở nhà, đi cafe nhẹ nhàng.
               </p>
               <div class="product-bottom">
-                <div class="product-price">259.000đ</div>
+                <div class="product-price">999.000đ</div>
                 <div class="product-badge">New</div>
               </div>
               <div class="product-chip-row">
@@ -922,8 +1017,9 @@
           <!-- Card 4 -->
           <article
             class="product-card"
-            data-name="Set đồ comfy ở nhà"
-            data-price="259.000đ"
+            data-category="giay"
+            data-name="Mã 004"
+            data-price="999.000đ"
             data-desc="Set áo quần mặc nhà siêu thoải mái, lên hình vẫn đẹp."
             data-images='[
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/004.jpg",
@@ -939,7 +1035,7 @@
               <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
             </div>
             <div class="product-body">
-              <div class="product-name">Set đồ comfy ở nhà</div>
+              <div class="product-name">Mã 004</div>
               <p class="product-desc">
                 Mềm nhẹ, thấm hút tốt, hợp mặc ở nhà, đi cafe nhẹ nhàng.
               </p>
@@ -957,7 +1053,8 @@
  <!-- Card 5 -->
           <article
             class="product-card"
-            data-name="Set đồ comfy ở nhà"
+            data-category="ao"
+            data-name="Mã 005"
             data-price="259.000đ"
             data-desc="Set áo quần mặc nhà siêu thoải mái, lên hình vẫn đẹp."
             data-images='[
@@ -975,7 +1072,7 @@
               <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
             </div>
             <div class="product-body">
-              <div class="product-name">Set đồ comfy ở nhà</div>
+              <div class="product-name">Mã 005</div>
               <p class="product-desc">
                 Mềm nhẹ, thấm hút tốt, hợp mặc ở nhà, đi cafe nhẹ nhàng.
               </p>
@@ -996,7 +1093,7 @@
     </main>
 
     <!-- ===== FOOTER ===== -->
-    <footer> Shop Của Nhỏ Nhỏ Xinh Xinh · Liên hệ để đặt hàng nhanh.</footer>
+    <footer> Nhỏ Nhỏ Xinh Xinh · Liên hệ để đặt hàng nhanh.</footer>
 
     <!-- ===== MOBILE CONTACT BAR ===== -->
     <div class="mobile-contact-bar">
@@ -1070,6 +1167,32 @@
 
   <!-- ===== JS ===== -->
   <script>
+    // mở phân loại
+        // Lọc sản phẩm theo category
+    const filterButtons = document.querySelectorAll(".category-menu button");
+    const productCards = document.querySelectorAll(".product-card");
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const filter = btn.dataset.filter;
+
+        // Active nút
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        // Lọc sản phẩm
+        productCards.forEach(card => {
+          const category = card.dataset.category;
+
+          if (filter === "all" || category === filter) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+// kết phân loại
     // Cấu hình link liên hệ chính (được dùng khi bấm nút "Liên hệ ngay với người bán" trong modal)
     const CONTACT_URL = "https://www.facebook.com/profile.php?id=61582939686089"; // TODO: đổi sang link thật (FB / Zalo / form...)
 
