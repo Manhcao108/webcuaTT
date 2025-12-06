@@ -318,14 +318,6 @@
       color: #1877f2;
     }
 
-    .social-zalo {
-      color: #0068ff;
-    }
-
-    .social-kakao {
-      color: #2e1810;
-    }
-
     /* ===== Hero section ===== */
 
     .hero {
@@ -679,33 +671,8 @@
       color: var(--muted);
       margin-bottom: 10px;
     }
-/*  style của code màu có sẵn */
-    /* .color-row {
-      display: flex;
-      align-items: center;
-      gap: 5px;              
-      margin-bottom: 10px;
-      font-size: 0.8rem;
-    } */
-    /* .color-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-    }
+      /* ===== NÚT LIÊN HỆ ĐẸP (BẢN DÀNH CHO ID #contactBtn) ===== */
 
-    .color-dot.red {
-      background: #f56565;
-    }
-
-    .color-dot.black {
-      background: #111111;
-    }
-
-    .color-dot.white {
-      background: #f4f4f4;
-    } */
-/* /* kết  style của code màu có sẵn */ */
     .contact-btn {
       display: flex;
       align-items: center;
@@ -736,6 +703,8 @@
       font-size: 0.75rem;
       color: var(--muted);
     }
+
+
 
     /* ===== Mobile bar liên hệ nhanh (dưới cùng) ===== */
 
@@ -866,6 +835,32 @@
 </nav>
 <!-- kết phân loại -->
 
+<!-- Ô tìm kiếm mã sản phẩm -->
+<div class="search-box" style="
+  margin: 12px auto;
+  max-width: 320px;
+  display: flex;
+  gap: 8px;
+">
+  <input id="searchInput" 
+         type="text" 
+         placeholder="Tìm Kiếm Mã/Tên sản phẩm" 
+         style="flex: 1; padding: 8px 12px; border-radius: 12px; border: 1px solid #ccc;">
+  <button id="searchBtn" style="
+         padding: 8px 14px;
+         border-radius: 12px;
+         border: none;
+         background: #ff66a6;
+         color: white;
+         font-weight: 600;
+         cursor: pointer;">
+    Tìm
+  </button>
+</div>
+
+
+<!-- kết tìm kiếm mã -->
+
     </header>
 
     <!-- ===== HERO ===== -->
@@ -889,6 +884,20 @@
         </div>
 
         <div class="product-grid" id="productGrid">
+        <!-- thông báo khi ko có sản phẩm -->
+        <div id="noResultMessage" style="
+          display:none;
+          text-align:center;
+          width:100%;
+          grid-column:1 / -1;
+          padding:40px 0;
+          font-size:1rem;
+          color:#555;
+        ">
+          Shop hiện chưa có sản phẩm bạn tìm ❤️
+        </div>
+
+<!-- kết thông báo khi ko có sẳn phẩm -->
           <!-- Card 1       lưu ý : thêm ảnh thì sau 001.jpg" KO CÓ DẤU PHẨY Ở CUỐI KO CÓ DẤU PHẨY Ở CUỐI KO CÓ DẤU PHẨY Ở CUỐI
                                         nếu nhiều ảnh mới có ","  001.jpg",
                                                                   001a.jpg" -->
@@ -896,7 +905,7 @@
             class="product-card"
             data-category="ao set"
             data-name="Mã 001"
-            data-price="199.000đ"
+            data-price=""
             data-desc="mềm mịn, dễ phối đồ."
             data-images='[
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/001.jpg"
@@ -916,11 +925,11 @@
                 Vải dày dặn, không xù lông, đủ size S - XL, 4 màu cơ bản.
               </p>
               <div class="product-bottom">
-                <div class="product-price">999.999đ</div>
-                <div class="product-badge">Còn hàng</div>
+                <div class="product-price"></div>
+                <div class="product-badge">TT</div>
               </div>
               <div class="product-chip-row">
-                <span class="dot"></span> <span>4 màu · Freeship nội thành</span>
+                <span class="dot"></span> <span></span>
               </div>
             </div>
             
@@ -931,7 +940,7 @@
             class="product-card"
             data-category="quan"
             data-name="Mã 002"
-            data-price="999.000đ"
+            data-price=""
             data-desc="form Hàn, dễ phối áo thun."
             data-images='[
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/002.jpg",
@@ -951,11 +960,11 @@
                 Lưng cao tôn dáng, tông xanh vintage, ít nhăn, dễ giặt.
               </p>
               <div class="product-bottom">
-                <div class="product-price">999.000đ</div>
-                <div class="product-badge">Bán chạy</div>
+                <div class="product-price"></div>
+                <div class="product-badge">TT</div>
               </div>
               <div class="product-chip-row">
-                <span class="dot"></span> <span>Size 26 - 32 · 2 màu</span>
+                <span class="dot"></span> <span></span>
               </div>
             </div>
           </article>
@@ -965,10 +974,10 @@
             class="product-card"
             data-category="vay"
             data-name="Mã 003"
-            data-price="999.000đ"
+            data-price=""
             data-desc="Set áo quần mặc nhà siêu thoải mái, lên hình vẫn đẹp."
             data-images='[
-              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/003.jpg",
+              "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/003.jpg"
             ]'
           >
             <div class="product-image-wrapper">
@@ -984,11 +993,11 @@
                 Mềm nhẹ, thấm hút tốt, hợp mặc ở nhà, đi cafe nhẹ nhàng.
               </p>
               <div class="product-bottom">
-                <div class="product-price">999.000đ</div>
-                <div class="product-badge">New</div>
+                <div class="product-price"></div>
+                <div class="product-badge">TT</div>
               </div>
               <div class="product-chip-row">
-                <span class="dot"></span> <span>Mặc unisex · 3 màu</span>
+                <span class="dot"></span> <span></span>
               </div>
             </div>
           </article>
@@ -998,7 +1007,7 @@
             class="product-card"
             data-category="giay"
             data-name="Mã 004"
-            data-price="999.000đ"
+            data-price=""
             data-desc="Set áo quần mặc nhà siêu thoải mái, lên hình vẫn đẹp."
             data-images='[
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/004.jpg",
@@ -1019,11 +1028,11 @@
                 Mềm nhẹ, thấm hút tốt, hợp mặc ở nhà, đi cafe nhẹ nhàng.
               </p>
               <div class="product-bottom">
-                <div class="product-price">259.000đ</div>
-                <div class="product-badge">New</div>
+                <div class="product-price"></div>
+                <div class="product-badge">TT</div>
               </div>
               <div class="product-chip-row">
-                <span class="dot"></span> <span>Mặc unisex · 3 màu</span>
+                <span class="dot"></span> <span></span>
               </div>
             </div>
           </article>
@@ -1033,8 +1042,8 @@
           <article
             class="product-card"
             data-category="ao"
-            data-name="Mã 005"
-            data-price="259.000đ"
+            data-name="[005] áo lông "
+            data-price=""
             data-desc="Set áo quần mặc nhà siêu thoải mái, lên hình vẫn đẹp."
             data-images='[
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005.jpg",
@@ -1042,7 +1051,6 @@
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005b.jpg",
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005c.jpg",
               "https://raw.githubusercontent.com/Manhcao108/anhsp/refs/heads/main/005d.jpg"
-         
 
             ]'
           >
@@ -1054,16 +1062,16 @@
               <div class="product-hover">Nhấn để xem nhiều hình &amp; liên hệ</div>
             </div>
             <div class="product-body">
-              <div class="product-name">Mã 005</div>
+              <div class="product-name">[005] áo lông </div>
               <p class="product-desc">
                 Mềm nhẹ, thấm hút tốt, hợp mặc ở nhà, đi cafe nhẹ nhàng.
               </p>
               <div class="product-bottom">
-                <div class="product-price">259.000đ</div>
-                <div class="product-badge">New</div>
+                <div class="product-price"></div>
+                <div class="product-badge">TT</div>
               </div>
               <div class="product-chip-row">
-                <span class="dot"></span> <span>Mặc unisex · 3 màu</span>
+                <span class="dot"></span> <span></span>
               </div>
             </div>
           </article>
@@ -1122,13 +1130,6 @@
               Mô tả sản phẩm sẽ hiển thị ở đây.
             </p>
 
-            <!-- <div class="color-row">   dòng màu sản phẩm có sẵn 
-              <span>Màu có sẵn:</span>
-              <span class="color-dot red"></span>
-              <span class="color-dot black"></span>
-              <span class="color-dot white"></span>
-            </div> -->
-
             <!-- TODO: thay link sang liên hệ bạn muốn (fb, zalo, sđt,...) -->
             <button
               class="contact-btn"
@@ -1149,30 +1150,89 @@
 
   <!-- ===== JS ===== -->
   <script>
-    // mở phân loại
-        // Lọc sản phẩm theo category
-    const filterButtons = document.querySelectorAll(".category-menu button");
-    const productCards = document.querySelectorAll(".product-card");
 
-    filterButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const filter = btn.dataset.filter;
+  // js tìm kiếm mã
+// === TÌM KIẾM THEO MÃ + TÊN + MÔ TẢ ===
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+const noResultMessage = document.getElementById("noResultMessage");
 
-        // Active nút
-        filterButtons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+function searchProduct() {
+  const keyword = searchInput.value.trim().toLowerCase();
+  const cards = document.querySelectorAll(".product-card");
 
-        // Lọc sản phẩm
-        productCards.forEach(card => {
-        const categories = card.dataset.category.split(" "); // tách chuỗi
-        if (filter === "all" || categories.includes(filter)) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
-      });
+  // Nếu ô tìm kiếm trống → hiện toàn bộ + ẩn thông báo
+  if (keyword === "") {
+    cards.forEach(card => (card.style.display = "block"));
+    noResultMessage.style.display = "none";
+    return;
+  }
+
+  let foundCount = 0;
+
+  cards.forEach(card => {
+    const name = (card.dataset.name || "").toLowerCase();     
+    const desc = (card.dataset.desc || "").toLowerCase();     
+    const textMatch = `${name} ${desc}`;                      
+
+    if (textMatch.includes(keyword)) {
+      card.style.display = "block";
+      foundCount++;
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  // Nếu không tìm thấy sản phẩm → HIỆN thông báo
+  if (foundCount === 0) {
+    noResultMessage.style.display = "block";
+  } else {
+    noResultMessage.style.display = "none";
+  }
+}
+
+searchBtn.addEventListener("click", searchProduct);
+
+// Nhấn Enter để tìm
+searchInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") searchProduct();
+});
+
+
+// ========== LỌC THEO PHÂN LOẠI ==========
+const filterButtons = document.querySelectorAll(".category-menu button");
+const productCards = document.querySelectorAll(".product-card");
+
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const filter = btn.dataset.filter;
+
+    // Active nút
+    filterButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    let shownCount = 0;
+
+    productCards.forEach(card => {
+      const categories = card.dataset.category.split(" ");
+
+      if (filter === "all" || categories.includes(filter)) {
+        card.style.display = "block";
+        shownCount++;
+      } else {
+        card.style.display = "none";
+      }
     });
+
+    // Hiện thông báo nếu không có sản phẩm
+    if (shownCount === 0) {
+      noResultMessage.style.display = "block";
+    } else {
+      noResultMessage.style.display = "none";
+    }
+  });
+});
+
 // kết phân loại
     // Cấu hình link liên hệ chính (được dùng khi bấm nút "Liên hệ ngay với người bán" trong modal)
     const CONTACT_URL = "https://www.facebook.com/profile.php?id=61582939686089"; // TODO: đổi sang link thật (FB / Zalo / form...)
